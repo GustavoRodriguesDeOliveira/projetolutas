@@ -1,0 +1,40 @@
+.corpo-geral {
+    width: auto;
+    padding-top: 100px;
+    height: auto;
+}
+
+.apresentacao {
+    
+    margin-left: 100px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#texto-apresentacao{
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+.f-style{
+    font-family: 'Roboto';
+    font-weight: 900;
+}
+#cards-lutas{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+#continuacao-apresentacao p{
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    padding-bottom: 50px;
+}

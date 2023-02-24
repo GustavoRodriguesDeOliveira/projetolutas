@@ -1,0 +1,24 @@
+#corpo-texto {
+    width: auto;
+    height: auto;
+    padding-top: 20px;
+}
+
+#muaithay {
+    
+    padding-bottom: 10px;
+    background-color: white;
+    background: linear-gradient(180deg, white 80%, rgb(250, 38, 38) 100%)
+    
+}
+
+#maiores-campeoes {
+    padding-bottom: 10px;
+    background-color: rgb(250, 38, 38);
+    background: linear-gradient(180deg, rgb(250, 38, 38) 80%, rgb(245, 108, 108) 100%)
+}
+
+#campeao-atual-ranking {
+    padding-bottom: 10px;
+    background-color: rgb(245, 108, 108);
+}

@@ -1,0 +1,63 @@
+.corpo-texto{
+    padding: 30px 10px 10px 10px;
+}
+.container-perfil{
+    display: flex;
+    justify-content: center;
+}
+.container-user{
+    display: inline-block;
+    
+    background-color: antiquewhite;
+    border-radius: 20px;
+    padding: 20px 30px 20px 30px;
+    border: solid 1px rgb(252, 220, 178);
+}
+.container-user-information{
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto';
+}
+.boas-vindas-user{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    background-color: rgb(255, 255, 255);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    border: 1px dashed #000000;
+}
+.container-user-image img{
+    width: 200px;
+    max-width: 200px;
+    border-radius: 10px;
+    border: solid 1px red;
+}
+.controles{
+    width: 100%;
+}
+
+.controles input{
+    float:right;
+}
+.controles button{
+    float: right;
+}
+.user-slogan-area{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.user-slogan-area  textarea{
+    width: 700px;
+    height: 300px;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px 10px 10px 10px;
+}
+.user-slogan-area button{
+    border-radius: 0px 0px 10px 10px;
+    max-width: 700px;
+}
