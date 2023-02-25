@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION['user-image'] = $user_image;
 		$_SESSION['user_slogan'] = $user_slogan;
 		$_SESSION['user-name'] = $user_name;
-		header("Location: index.php");
+		header('Location: header.php');
 		exit;
 	} else {
 		// Login inválido
