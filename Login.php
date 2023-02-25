@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 
 	// Monta a consulta SQL
-	$sql = "SELECT * FROM usuarios WHERE email = ?";
+	$sql = "SELECT * FROM usuarios WHERE email = '$email'";
 
 	// Executa a consulta SQL
-	$resultado = sqlsrv_query($conn, $sql, $email);
+	$resultado = sqlsrv_query($conn, $sql);
 
 	// Verifica se houve erro na consulta
 	if (!$resultado) {
