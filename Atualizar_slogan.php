@@ -2,17 +2,17 @@
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Configurações do banco de dados
-    $host = "bancolutas.database.windows.net";
+    $host = "tcp:bancolutas.database.windows.net,1433";
     $user = "adminserver";
     $password = "Senhafacil123@";
     $database = "phpsite";
 
     // Conexão com o banco de dados
-    $conn = mysqli_connect($host, $user, $password, $database);
+    $conn = sqlsrv_connect($host, array("UID"=>$user, "PWD"=>$password, "Database"=>$database));
 
     // Verifica se houve erro na conexão
     if (!$conn) {
-        die("Falha na conexão: " . mysqli_connect_error());
+        die(print_r(sqlsrv_errors(), true));
     }
 
     $slogan = $_POST['slogan'];
@@ -20,11 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userid = $_SESSION['userid'];
 
     // Prepara a consulta SQL
-    $stmt = mysqli_prepare($conn, "UPDATE usuarios SET pslogan = ? WHERE id = ?");
-    mysqli_stmt_bind_param($stmt, "si", $slogan, $userid);
-    mysqli_stmt_execute($stmt);
+    $stmt = sqlsrv_prepare($conn, "UPDATE usuarios SET pslogan = ? WHERE id = ?");
+    sqlsrv_bind_param($stmt, 1, $slogan);
+    sqlsrv_bind_param($stmt, 2, $userid);
+    sqlsrv_execute($stmt);
 
-    if (mysqli_affected_rows($conn) > 0) {
+    $rowsAffected = sqlsrv_rows_affected($stmt);
+
+    if ($rowsAffected > 0) {
         $_SESSION['user_slogan'] = $slogan;
         echo "Slogan atualizado com sucesso.";
         header('Location: meuperfil.php');
@@ -33,9 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: meuperfil.php');
     }
 
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+    sqlsrv_free_stmt($stmt);
+    sqlsrv_close($conn);
 }
+
 
 
 

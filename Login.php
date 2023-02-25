@@ -20,36 +20,34 @@
 			$database = "phpsite";
 
 			// Conexão com o banco de dados
-			$conn = mysqli_connect($host, $user, $password, $database);
+			$conn = sqlsrv_connect($host, array("UID" => $user, "PWD" => $password, "Database" => $database));
 
 			// Verifica se houve erro na conexão
 			if (!$conn) {
-				die("Falha na conexão: " . mysqli_connect_error());
+				die("Falha na conexão: " . sqlsrv_errors());
 			}
 
-
 			// Obtém os valores do formulário
-		
 			$email = $_POST['email'];
 			$senha = $_POST['senha'];
 
 			// Escapa os valores para evitar injeção de SQL
-			$email = mysqli_real_escape_string($conn, $email);
-			$senha = mysqli_real_escape_string($conn, $senha);
+			$email = sqlsrv_real_escape_string($conn, $email);
+			$senha = sqlsrv_real_escape_string($conn, $senha);
 
 			// Monta a consulta SQL
 			$sql = "SELECT * FROM usuarios WHERE email = '$email'";
 
 			// Executa a consulta SQL
-			$resultado = mysqli_query($conn, $sql);
+			$resultado = sqlsrv_query($conn, $sql);
 
 			// Verifica se houve erro na consulta
 			if (!$resultado) {
-				die("Erro na consulta: " . mysqli_error($conn));
+				die("Erro na consulta: " . sqlsrv_errors());
 			}
 
 			// Obtém o resultado da consulta
-			$usuario = mysqli_fetch_assoc($resultado);
+			$usuario = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
 			session_start();
 
 			// Verifica se o usuário existe e a senha está correta
@@ -74,7 +72,7 @@
 			}
 
 			// Fecha a conexão com o banco de dados
-			mysqli_close($conn);
+			sqlsrv_close($conn);
 		}
 		?>
 		<label for="email">E-mail:</label>

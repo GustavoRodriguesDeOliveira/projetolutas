@@ -13,7 +13,7 @@ if (isset($_POST['upload'])) {
     // Verifica se o arquivo é uma imagem
     $permitidos = array('image/jpeg', 'image/png', 'image/gif');
     if (!in_array($tipo_arquivo, $permitidos)) {
-        
+
         header('Location: meuperfil.php');
         echo "Somente arquivos JPEG, PNG e GIF são permitidos";
         exit;
@@ -27,28 +27,30 @@ if (isset($_POST['upload'])) {
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Configurações do banco de dados
-        $host = "bancolutas.database.windows.net";
-        $user = "adminserver";
-        $password = "Senhafacil123@";
-        $database = "phpsite";
+        $serverName = "tcp:bancolutas.database.windows.net,1433";
+        $connectionOptions = array(
+            "Database" => "phpsite",
+            "Uid" => "adminserver",
+            "PWD" => "Senhafacil123@"
+        );
 
         // Conexão com o banco de dados
-        $conn = mysqli_connect($host, $user, $password, $database);
+        $conn = sqlsrv_connect($serverName, $connectionOptions);
 
         // Verifica se houve erro na conexão
-        if (!$conn) {
-            die("Falha na conexão: " . mysqli_connect_error());
+        if ($conn === false) {
+            die(print_r(sqlsrv_errors(), true));
         }
 
         $profimage = $diretorio . $nome_arquivo;
         $userid = $_SESSION['userid'];
 
         // Prepara a consulta SQL
-        $stmt = mysqli_prepare($conn, "UPDATE usuarios SET profimage = ? WHERE id = ?");
-        mysqli_stmt_bind_param($stmt, "si",$profimage, $userid);
-        mysqli_stmt_execute($stmt);
+        $sql = "UPDATE usuarios SET profimage = ? WHERE id = ?";
+        $params = array($profimage, $userid);
+        $stmt = sqlsrv_query($conn, $sql, $params);
 
-        if (mysqli_affected_rows($conn) > 0) {
+        if (sqlsrv_rows_affected($stmt) > 0) {
             $_SESSION['user-image'] = $profimage;
             echo "Foto atualizada.";
             header('Location: meuperfil.php');
@@ -56,9 +58,10 @@ if (isset($_POST['upload'])) {
             echo "Nenhum registro foi atualizado.";
         }
 
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn);
+        sqlsrv_free_stmt($stmt);
+        sqlsrv_close($conn);
     }
+
 }
 
 ?>

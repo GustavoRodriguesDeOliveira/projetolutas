@@ -1,16 +1,17 @@
 <?php
-        $host = "bancolutas.database.windows.net";
-        $user = "adminserver";
-        $password = "Senhafacil123@";
-        $database = "phpsite";
+$host = "tcp:bancolutas.database.windows.net,1433";
+$user = "adminserver";
+$password = "Senhafacil123@";
+$database = "phpsite";
 
-// Cria a conexão com o banco de dados utilizando a extensão MySQLi
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Cria a conexão com o banco de dados utilizando a extensão sqlsrv
+$conn = sqlsrv_connect($host, array("UID" => $user, "PWD" => $password, "Database" => $database));
 
 // Verifica se houve algum erro na conexão
 if (!$conn) {
-    die("Conexão falhou: " . mysqli_connect_error());
+    die("Conexão falhou: " . print_r(sqlsrv_errors(), true));
 }
+
 // Verifica se o formulário foi enviado (após clicar no botão "Cadastrar")
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -25,16 +26,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insere os dados na tabela "usuarios"
     $sql = "INSERT INTO usuarios (nome,email, senha, profimage, pslogan) VALUES ('$nome','$email', '$senha', '$profilepicnative', '$sloganpadrao')";
 
-    if (mysqli_query($conn, $sql)) {
+    if (sqlsrv_query($conn, $sql)) {
         echo "Usuário cadastrado com sucesso!";
         header("Location: index.php");
     } else {
-        echo "Erro ao cadastrar usuário: " . mysqli_error($conn);
+        echo "Erro ao cadastrar usuário: " . print_r(sqlsrv_errors(), true);
     }
 
     // Fecha a conexão com o banco de dados
-    mysqli_close($conn);
+    sqlsrv_close($conn);
 }
+
 
 
 
@@ -66,7 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         input[type="email"],
-        input[type="password"], input[type='text'] {
+        input[type="password"],
+        input[type='text'] {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
