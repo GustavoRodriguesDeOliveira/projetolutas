@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
 <?php
 ob_start();
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -75,6 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	sqlsrv_close($conn);
 }
 ?>
+
+<!DOCTYPE html>
+<html>
 
 <head>
 	<title>Página de Login</title>
