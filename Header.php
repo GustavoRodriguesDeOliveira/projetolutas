@@ -1,12 +1,11 @@
+<?php
+    session_start();
+    ?>
 <!DOCTYPE HTML>
 <HTML lang="pt-BR">
 
 <HEAD>
-    <?php
-    session_start();
-    
 
-    ?>
     <meta charset="UTF-8" />
     <Title> Warriors of Tomorrow</Title>
     <link rel="shortcut icon" type="imagem/x-icon" href="./Imagens/icone.ico" />

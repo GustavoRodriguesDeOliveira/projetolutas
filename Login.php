@@ -1,6 +1,6 @@
 <?php
-ob_start();
 session_start();
+ob_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -93,10 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<p>Não possui uma conta? <a href="./Cadastro.php">Cadastre-se aqui</a>.</p>
 		<p>Voltar para a página de início <a href="./index.php">Início</a></p>
 	</form>
-	<script>
-		var userImage = document.querySelector('#user-id-data img');
-		userImage.setAttribute('src', '<?php echo $_SESSION['user_image_url']; ?>');
-	</script>
+
 </body>
 
 
