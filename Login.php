@@ -29,14 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	echo ("Senha enviada:" . $senha);
 
 	// Escapa os valores para evitar injeção de SQL
-	$email = sqlsrv_real_escape_string($conn, $email);
-	$senha = sqlsrv_real_escape_string($conn, $senha);
+	
 
 	// Monta a consulta SQL
-	$sql = "SELECT * FROM usuarios WHERE email = '$email'";
+	$sql = "SELECT * FROM usuarios WHERE email = ?";
 
 	// Executa a consulta SQL
-	$resultado = sqlsrv_query($conn, $sql);
+	$resultado = sqlsrv_query($conn, $sql, $email);
 
 	// Verifica se houve erro na consulta
 	if (!$resultado) {
