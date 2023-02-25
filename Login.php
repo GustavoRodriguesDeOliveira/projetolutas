@@ -1,7 +1,9 @@
 <?php
 ob_start();
 session_start();
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,9 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		die("Falha na conexão: " . sqlsrv_errors());
 	}
 
-	// Obtém os valores do formulário
-	$email = $_POST['email'];
-	$senha = $_POST['senha'];
+	
 
 	echo ("Email inserido:" . $email);
 	echo ("Senha enviada:" . $senha);
@@ -30,10 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 
 	// Monta a consulta SQL
-	$sql = "SELECT * FROM usuarios WHERE email = '$email'";
-
+	$sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+	$parameters= [$_POST['email'], $_POST['senha']];
 	// Executa a consulta SQL
-	$resultado = sqlsrv_query($conn, $sql);
+	$resultado = sqlsrv_query($conn, $sql, $parameters);
 
 	// Verifica se houve erro na consulta
 	if (!$resultado) {
@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// Obtém o resultado da consulta
 	$usuario = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
-	
 
 	echo ($usuario['id'] . $usuario['nome'] . $usuario['senha'] . $usuario['email'] . $usuario['pslogan']);
 	// Verifica se o usuário existe e a senha está correta
