@@ -4,7 +4,7 @@
     session_destroy();
     session_start();
     $_SESSION['logado'] = False;
-    header('Location: home.php');
+    header('Location: index.php');
     exit();
 
 ?>

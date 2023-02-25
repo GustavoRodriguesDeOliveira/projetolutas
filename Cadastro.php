@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conn, $sql)) {
         echo "Usuário cadastrado com sucesso!";
-        header("Location: home.php");
+        header("Location: index.php");
     } else {
         echo "Erro ao cadastrar usuário: " . mysqli_error($conn);
     }

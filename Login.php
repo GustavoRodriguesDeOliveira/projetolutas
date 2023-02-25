@@ -64,7 +64,7 @@
 				$_SESSION['user-image'] = $user_image;
 				$_SESSION['user_slogan'] = $user_slogan;
 				$_SESSION['user-name'] = $user_name;
-				header("Location: home.php");
+				header("Location: index.php");
 				exit;
 			} else {
 				// Login inválido
@@ -85,7 +85,7 @@
 
 		<input type="submit" value="Entrar">
 		<p>Não possui uma conta? <a href="./Cadastro.php">Cadastre-se aqui</a>.</p>
-		<p>Voltar para a página de início <a href="./Home.php">Início</a></p>
+		<p>Voltar para a página de início <a href="./index.php">Início</a></p>
 	</form>
 	<script>
 		var userImage = document.querySelector('#user-id-data img');

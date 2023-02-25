@@ -38,7 +38,7 @@
 
     <header id="headerpage">
         <div id="nome-slogan-site">
-            <a href='./Home.php'>
+            <a href='./index.php'>
                 <h1>Warriors of Tomorrow</h1>
             </a>
             <h4>Estilos variados e empolgantes</h4>
