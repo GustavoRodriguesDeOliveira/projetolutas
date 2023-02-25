@@ -14,9 +14,9 @@
 		// Verifica se o formulário foi enviado
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// Configurações do banco de dados
-			$host = "localhost";
-			$user = "root";
-			$password = "";
+			$host = "bancolutas.database.windows.net";
+			$user = "adminserver";
+			$password = "Senhafacil123@";
 			$database = "phpsite";
 
 			// Conexão com o banco de dados
@@ -29,7 +29,7 @@
 
 
 			// Obtém os valores do formulário
-
+		
 			$email = $_POST['email'];
 			$senha = $_POST['senha'];
 

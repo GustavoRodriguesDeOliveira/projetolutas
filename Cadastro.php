@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost"; // endereço do servidor de banco de dados
-$username = "root"; // usuário do banco de dados
-$password = ""; // senha do usuário do banco de dados
-$dbname = "phpsite"; // nome do banco de dados
+        $host = "bancolutas.database.windows.net";
+        $user = "adminserver";
+        $password = "Senhafacil123@";
+        $database = "phpsite";
 
 // Cria a conexão com o banco de dados utilizando a extensão MySQLi
 $conn = mysqli_connect($servername, $username, $password, $dbname);
