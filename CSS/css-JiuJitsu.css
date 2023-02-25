@@ -1,0 +1,41 @@
+body {
+    background-color: yellow;
+}
+
+#corpo-texto {
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+    background-color: blue;
+}
+
+#jiujitsu {
+    
+    padding-bottom: 10px;
+    background-color: white;
+    background: linear-gradient(180deg, rgb(255, 251, 0) 80%, rgb(30, 255, 0) 100%)
+    
+}
+
+#maiores-campeoes {
+    padding-bottom: 10px;
+    background-color: rgb(250, 38, 38);
+    background: linear-gradient(180deg, rgb(30, 255, 0) 80%, rgb(25, 48, 255) 100%)
+}
+
+#campeao-atual-ranking {
+    padding-bottom: 10px;
+    background-color: rgb(25, 48, 255);
+}
+
+#origemtexto {
+    margin-right: 30px;
+}
+
+#informativo-trofeus h4{
+    color: red;
+    font-size: 20px;
+}
+#informativo-trofeus p{
+    color: black;
+}

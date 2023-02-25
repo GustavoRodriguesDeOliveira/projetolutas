@@ -1,0 +1,18 @@
+body{
+    background-color: blueviolet;
+    
+}
+#kickboxing{
+    padding-bottom: 10px;
+    background-color: blueviolet;
+    background: linear-gradient(180deg, blueviolet 90%, rgb(180, 88, 255))
+}
+#primeiro-medalista{
+    padding-bottom: 10px;
+    background-color: rgb(180, 88, 255);
+    background: linear-gradient(180deg, rgb(180, 88, 255) 90%, rgb(98, 0, 255) 100%)
+}
+#atual-campeao{
+    background-color: rgb(98, 0, 255);
+    padding-bottom: 10px;
+}
