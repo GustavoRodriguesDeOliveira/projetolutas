@@ -23,11 +23,7 @@ if (isset($_POST['upload'])) {
     }
 
     // Move a imagem para o diretório especificado
-    if (move_uploaded_file($temp_arquivo, $diretorio . $nome_arquivo)) {
-        echo "Upload de imagem realizado com sucesso!";
-    } else {
-        echo "Falha ao realizar upload de imagem";
-    }
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Configurações do banco de dados
         $serverName = "tcp:bancolutas.database.windows.net,1433";
@@ -55,8 +51,7 @@ if (isset($_POST['upload'])) {
 
         if (sqlsrv_rows_affected($stmt) > 0) {
             $_SESSION['user-image'] = $profimage;
-            echo "Foto atualizada.";
-            header('Location: ./meuperfil.php');
+            header('Location: meuperfil.php');
             exit;
         } else {
             echo "Nenhum registro foi atualizado.";
