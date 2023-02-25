@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -36,12 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($rowsAffected > 0) {
         $_SESSION['user_slogan'] = $slogan;
-        echo "Slogan atualizado com sucesso.";
+        
         header('Location: meuperfil.php');
+        echo "Slogan atualizado com sucesso.";
         exit;
     } else {
-        echo "Nenhum registro foi atualizado.";
         header('Location: meuperfil.php');
+        echo "Nenhum registro foi atualizado.";
+        exit;
     }
 
     sqlsrv_free_stmt($stmt);
