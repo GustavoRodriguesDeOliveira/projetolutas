@@ -1,5 +1,8 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Configurações do banco de dados
     $host = "tcp:bancolutas.database.windows.net,1433";
@@ -8,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $database = "phpsite";
 
     // Conexão com o banco de dados
-    $conn = sqlsrv_connect($host, array("UID"=>$user, "PWD"=>$password, "Database"=>$database));
+    $conn = sqlsrv_connect($host, array("UID" => $user, "PWD" => $password, "Database" => $database));
 
     // Verifica se houve erro na conexão
     if (!$conn) {
@@ -16,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $slogan = $_POST['slogan'];
-    $slogan = mysqli_real_escape_string($conn, $slogan);
     $userid = $_SESSION['userid'];
 
     // Prepara a consulta SQL

@@ -53,7 +53,7 @@ if (isset($_POST['upload'])) {
         if (sqlsrv_rows_affected($stmt) > 0) {
             $_SESSION['user-image'] = $profimage;
             echo "Foto atualizada.";
-            header('Location: meuperfil.php');
+            header('Location: ./meuperfil.php');
             exit;
         } else {
             echo "Nenhum registro foi atualizado.";
