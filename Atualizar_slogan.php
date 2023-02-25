@@ -3,6 +3,7 @@ session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Configurações do banco de dados
     $host = "tcp:bancolutas.database.windows.net,1433";
@@ -22,10 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userid = $_SESSION['userid'];
 
     // Prepara a consulta SQL
-    $stmt = sqlsrv_prepare($conn, "UPDATE usuarios SET pslogan = ? WHERE id = ?");
-    sqlsrv_bind_param($stmt, 1, $slogan);
-    sqlsrv_bind_param($stmt, 2, $userid);
-    sqlsrv_execute($stmt);
+    $sql = "UPDATE usuarios SET pslogan = ? WHERE id = ?";
+    $params = array($slogan, $userid);
+    $stmt = sqlsrv_query($conn, $sql, $params);
+
+    if ($stmt === false) {
+        echo "Erro ao executar consulta: " . print_r(sqlsrv_errors(), true);
+        exit;
+    }
 
     $rowsAffected = sqlsrv_rows_affected($stmt);
 
@@ -42,9 +47,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     sqlsrv_free_stmt($stmt);
     sqlsrv_close($conn);
 }
-
-
-
-
-
-?>
