@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php
+ob_start();
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -44,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// Obtém o resultado da consulta
 	$usuario = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
-	session_start();
+	
 
 	echo ($usuario['id'] . $usuario['nome'] . $usuario['senha'] . $usuario['email'] . $usuario['pslogan']);
 	// Verifica se o usuário existe e a senha está correta
