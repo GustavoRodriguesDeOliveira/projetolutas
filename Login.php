@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	echo ($usuario['id'] . $usuario['nome'] . $usuario['senha'] . $usuario['email'] . $usuario['pslogan']);
 	// Verifica se o usuário existe e a senha está correta
-	if ($usuario && $senha == $usuario['senha']) {
+	if ($usuario && $_POST['senha'] == $usuario['senha']) {
 		// Login bem-sucedido
 		echo ('Login bem sucedido');
 		$user_id = $usuario['id'];
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION['user-image'] = $user_image;
 		$_SESSION['user_slogan'] = $user_slogan;
 		$_SESSION['user-name'] = $user_name;
-		header('Location: header.php');
+		header('Location: index.php');
 		exit;
 	} else {
 		// Login inválido
