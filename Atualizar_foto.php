@@ -54,6 +54,7 @@ if (isset($_POST['upload'])) {
             $_SESSION['user-image'] = $profimage;
             echo "Foto atualizada.";
             header('Location: meuperfil.php');
+            exit;
         } else {
             echo "Nenhum registro foi atualizado.";
         }
