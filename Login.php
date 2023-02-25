@@ -53,6 +53,7 @@
 			// Verifica se o usuário existe e a senha está correta
 			if ($usuario && $senha == $usuario['senha']) {
 				// Login bem-sucedido
+				echo ('Login bem sucedido');
 				$user_id = $usuario['id'];
 				$user_name = $usuario['nome'];
 				$user_image = $usuario['profimage'];
