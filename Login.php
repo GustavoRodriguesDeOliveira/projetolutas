@@ -23,9 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	
 
-	echo ("Email inserido:" . $email);
-	echo ("Senha enviada:" . $senha);
-
 	// Escapa os valores para evitar injeção de SQL
 	
 
