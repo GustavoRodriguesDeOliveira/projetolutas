@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Obtém o resultado da consulta
 	$usuario = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
 
-	echo ($usuario['id'] . $usuario['nome'] . $usuario['senha'] . $usuario['email'] . $usuario['pslogan']);
+	
 	// Verifica se o usuário existe e a senha está correta
 	if ($usuario && $_POST['senha'] == $usuario['senha']) {
 		// Login bem-sucedido
