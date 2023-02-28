@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Configurações do banco de dados
-	$host = "tcp:bancolutas.database.windows.net,1433";
+	$host = "tcp:lutasbanco.database.windows.net,1433";
 	$user = "adminserver";
 	$password = "Senhafacil123@";
 	$database = "phpsite";

@@ -1,5 +1,5 @@
 <?php
-$host = "tcp:bancolutas.database.windows.net,1433";
+$host = "tcp:lutasbanco.database.windows.net,1433";
 $user = "adminserver";
 $password = "Senhafacil123@";
 $database = "phpsite";

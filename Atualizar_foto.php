@@ -26,7 +26,7 @@ if (isset($_POST['upload'])) {
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Configurações do banco de dados
-        $serverName = "tcp:bancolutas.database.windows.net,1433";
+        $serverName = "tcp:lutasbanco.database.windows.net,1433";
         $connectionOptions = array(
             "Database" => "phpsite",
             "Uid" => "adminserver",
