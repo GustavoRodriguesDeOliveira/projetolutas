@@ -38,8 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($rowsAffected > 0) {
         $_SESSION['user_slogan'] = $slogan;
         
-        header('Location: meuperfil.php');
-        echo "Slogan atualizado com sucesso.";
+        header('Location: meuperfil.php');        
         exit;
     } else {
         header('Location: meuperfil.php');

@@ -24,9 +24,9 @@ if (isset($_POST['upload'])) {
 
     // Move a imagem para o diretório especificado
     if (move_uploaded_file($temp_arquivo, $diretorio . $nome_arquivo)) {
-        echo "Upload de imagem realizado com sucesso!";
+        
     } else {
-        echo "Falha ao realizar upload de imagem";
+        
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Configurações do banco de dados
